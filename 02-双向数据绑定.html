@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>双向数据绑定</title>
+</head>
+<body>
+<div id="app">
+    <h1>{{message}}</h1>
+    <h1>{{message}}</h1>
+    <h1>{{message}}</h1>
+    <h1>{{message}}</h1>
+    <h1>{{message}}</h1>
+    <p>{{message}}</p>
+    <div>
+        <span>{{message}}</span>
+    </div>
+    <!--
+        v-model :是 vue 中提供的一个特殊属性，在vue中称之为指令，
+        它的作用是：双向绑定表单控件
+           什么是双向绑定表单控件？
+            当数据发生变化时，DOM会自动更新
+            当表单控件中的值发生变化时，数据也会自动更新
+    -->
+    <input type="text" v-model="message">
+</div>
+
+</body>
+<script src="node_modules/vue/dist/vue.js"></script>
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            message: "hello"
+        }
+    });
+</script>
+</html>

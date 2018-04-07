@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello-World</title>
+</head>
+<body>
+    <div id="app">
+        <h1>{{1 + 1}}</h1>
+        <h1>{{'hello' + 'world'}}</h1>
+        <h1>{{message}}</h1>
+    </div>
+</body>
+<!--
+    1、cmd 进入node-demo目录 ，初始化 ： npm init -y
+    2、安装 vue ：npm i vue
+    3、导入 vue.js文件
+-->
+<script src="./node_modules/vue/dist/vue.js"></script>
+
+<script>
+    var message = "message1";//在此声明的变量不会被vue绑定
+    // 返回  vue 实例
+    const  vue = new Vue({
+        el :"#app", // 告诉vue，管理模板的入口，不在此模板，不能使用vue中的模板引擎语法。不要定义在 html或body节点上。
+        data:{ //data 中的数据不是一般数据，是响应式数据，当数据发生改变时，所有绑定该数据的DOM都会变化(MVVM)
+            message:"message"
+        }
+    });
+
+</script>
+</html>

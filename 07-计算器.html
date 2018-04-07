@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>计算器</title>
+</head>
+<body>
+    <div id="app">
+        <!--
+            v-model后面的.number为修饰符，
+            如果下面的操作为加法运算，会直接字符串相连接，
+            如果后面加了.number，会将绑定的属性转换为number类型，
+            参考文档: https://cn.vuejs.org/v2/guide/forms.html#%E4%BF%AE%E9%A5%B0%E7%AC%A6
+        -->
+        <input type="number" v-model.number="first">
+        <select v-model="operation">
+            <option value="0">+</option>
+            <option value="1">-</option>
+            <option value="2">*</option>
+            <option value="3">/</option>
+        </select>
+        <input  type="number" v-model.number="last">
+        <button @click="operationHandler">=</button><strong>{{value}}</strong>
+    </div>
+</body>
+<script src="node_modules/vue/dist/vue.js"></script>
+<script>
+    const  app = new Vue({
+        el:"#app",
+        data: {
+            first: '',
+            last: '',
+            operation: "0",
+            value:""
+        },
+        methods : {
+            operationHandler(){ //这里定义的是一个方法，在ES6语法中可以省略function关键字
+                switch (this.operation){
+                    case "0":
+                        this.value = this.first + this.last;
+                        break;
+                    case "1":
+                        this.value = this.first - this.last;
+                        break;
+                    case "2":
+                        this.value = this.first * this.last;
+                        break;
+                    case "3":
+                        this.value = this.first / this.last;
+                        break;
+
+                }
+            }
+        }
+
+    })
+</script>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>03-双向数据绑定-输入姓和名(vue)</title>
+</head>
+<body>
+<div id="app">
+    <input type="text" v-model="firstname">
+    <br>
+    <input type="text" v-model="lastname">
+    <br>
+    <span>姓+名：{{firstname + lastname}}</span><br>
+    <span>名:{{lastname}}</span>
+</div>
+</body>
+<script src="node_modules/vue/dist/vue.js"></script>
+<script>
+    /*
+        使用Jquery，只是提高了Dom操作的效率
+        使用vue与使用dom对比:
+            Vue极大的解放了使用Dom操作,解耦(javascript代码与html代码)
+            Vue把Dom的操作都隐藏了,简化了代码
+            Vue的核心思想：数据驱动视图。
+    */
+    new Vue({
+        el: "#app",
+        data: {
+            firstname: "",
+            lastname: ""
+        }
+    });
+
+</script>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>03-双向数据绑定-输入姓和名(dom)</title>
+</head>
+<body>
+<input type="text" id="firstname">
+<br>
+<input type="text" id="lastname">
+<br>
+<span id="fullname"></span>
+</body>
+<script>
+    var firstname = document.getElementById("firstname");
+    var lastname = document.getElementById("lastname");
+    var fullname = document.getElementById("fullname");
+    firstname.addEventListener("input", eventHandler);
+    lastname.addEventListener("input", eventHandler);
+
+    function eventHandler() {
+        fullname.innerHTML = firstname.value + lastname.value;
+    }
+
+</script>
+</html>

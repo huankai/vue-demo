@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Todo</title>
+</head>
+<style>
+    .done {
+        color: #ccc;
+        text-decoration: line-through;
+    }
+</style>
+<body>
+    <div id="app">
+        <h1>我的待办</h1>
+        <p> {{todoList.filter(item => !item.done).length}} of {{todoList.length}} remaning [archive]</p>
+        <!--
+            v-for指令：表示循环,第一个参数表示迭代的别名，第二个参数可选，表示迭代的索引
+        -->
+        <p v-for="(item,index) in todoList">
+            <!-- v-model 指令在 input[type=checkbox] 上时是一个Boolean值 ，如果为true,会选中该复选框-->
+            <input type="checkbox" v-model="item.done">
+
+            <!--
+                v-bind：可以动态绑定属性值，后面接属性值,
+                class 需要给定一个对象，对象的key 为样式 ,value为一个boolean值,只有value为true时，key的样式才生效
+            -->
+            <span v-bind:class="{done:item.done}" class="">{{item.title}}</span>
+            <button @click="handlerRemoveTodo(index)">X</button>
+        </p>
+        <!--
+            @keydown.enter ：表示光标在此文本内，当键盘按下为enter时，执行addTodo方法，此指令简化了原始的写法
+        -->
+        <input type="text" v-model="todoText" @keydown.enter="addTodo">
+        <button @click="addTodo">添加</button>
+    </div>
+
+</body>
+<script src="node_modules/vue/dist/vue.js"></script>
+<script>
+    const todoList = [
+        {
+            id:1,
+            title:"吃饭",
+            done:false
+        },
+        {
+            id:2,
+            title:"睡觉",
+            done:false
+        },
+        {
+            id:3,
+            title:"写代码",
+            done:true
+        },
+    ];
+
+    new Vue({
+        el:"#app",
+        data:{
+            todoList:todoList,
+            todoText:""
+        },
+        methods:{
+            addTodo(){
+                if(!this.todoText){
+                    return;
+                }
+                this.todoList.push({
+                   id:this.todoList.length+1,
+                   title:this.todoText,
+                    done:false
+                });
+                this.todoText = '';//清除文本框的内容
+            },
+            handlerRemoveTodo(index){
+                this.todoList.splice(index,1);
+            }
+        }
+    });
+</script>
+</html>

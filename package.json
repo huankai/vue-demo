@@ -1,0 +1,21 @@
+{
+  "name": "node-demo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev":"browser-sync start --server --files \"*.html,js/*.js,*.css",
+    "start":"npm run dev"
+
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "vue": "^2.5.16"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.23.6"
+  }
+}
