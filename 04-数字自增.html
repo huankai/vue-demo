@@ -6,33 +6,33 @@
 </head>
 <body>
 
-    <div id="app">
-        <input type="number" v-model="num">
-        <!--方式一：，使用原生onclick方法，不建议使用-->
-        <!--<button onclick="numIncrement()">点击加1</button>-->
+<div id="app">
+    <input type="number" v-model="num">
+    <!--方式一：，使用原生onclick方法，不建议使用-->
+    <!--<button onclick="numIncrement()">点击加1</button>-->
 
-        <!--方式二：对于简单的操作，可以直接如下方式使用-->
-        <!--<button @click="num++">点击加1</button>-->
-        <!--<button v-on:click="num++">点击加1</button>-->
+    <!--方式二：对于简单的操作，可以直接如下方式使用-->
+    <!--<button @click="num++">点击加1</button>-->
+    <!--<button v-on:click="num++">点击加1</button>-->
 
-        <!--方式三：对于复杂的操作，可以在vue对象中定义方法-->
-        <button v-on:click="numIncrement">点击加1</button>
-    </div>
+    <!--方式三：对于复杂的操作，可以在vue对象中定义方法-->
+    <button v-on:click="numIncrement">点击加1</button>
+</div>
 </body>
 <script src="node_modules/vue/dist/vue.js"></script>
 
 <script>
     const app = new Vue({
-        el:"#app",
-        data:{
-            num:1
+        el: "#app",
+        data: {
+            num: 1
 //            numIncrement:function () {
 //                console.log(this);//kjs方法定义在 data中，此this 为windows对象，不能访问vue中的data属性
             //所以方法一般不会定义在这里，而是在methods中定义
 //            }
         },
-        methods:{
-            numIncrement:function () {
+        methods: {
+            numIncrement: function () {
                 console.log(this);//此this 为Vue对象
                 //通过 v-on 注册到方法中去们可以直接用this来访问data中的属性
                 this.num++;
@@ -50,9 +50,9 @@
         }
     });
 
-//    function numIncrement() {
-//        app.num++;
-//    }
+    //    function numIncrement() {
+    //        app.num++;
+    //    }
 
 </script>
 </html>
